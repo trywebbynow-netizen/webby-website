@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview v5 — Mockups met echte foto's</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f7fa;--white:#fff;--border:rgba(0,0,0,.07);--text:#0d1526;--muted:#64748b;--accent:#f97316;--sans:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace}
+body{background:var(--bg);font-family:var(--sans);padding:60px 0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 48px}
+.stag{display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.15);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:700;color:#ea6a0a;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+.sh{font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--text)}
+.sh em{font-style:normal;background:linear-gradient(90deg,#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sp{font-size:1.05rem;color:var(--muted);line-height:1.7;margin-top:12px}
+.ex-sec{padding:100px 0;background:white;border-bottom:1px solid var(--border)}
+.ex-header{text-align:center;margin-bottom:56px}
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+
+/* Browser mockup */
+.mock-browser{border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,.1);background:white;box-shadow:0 4px 24px rgba(0,0,0,.09);transition:all .35s}
+.mock-browser:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,.14)}
+.br-chrome{padding:8px 12px;display:flex;align-items:center;gap:7px}
+.br-chrome.lt{background:#f1f3f5;border-bottom:1px solid rgba(0,0,0,.08)}
+.br-chrome.dk{background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.06)}
+.br-dots{display:flex;gap:4px}
+.br-dot{width:8px;height:8px;border-radius:50%}
+.br-r{background:#ff5f57}.br-y{background:#febc2e}.br-g{background:#28c840}
+.br-url{font-size:10px;font-family:var(--mono);flex:1;background:white;padding:4px 10px;border-radius:5px;border:1px solid rgba(0,0,0,.07);color:#64748b}
+.br-url.dk{background:#2a2a2a;border-color:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+
+/* Phone mockup */
+.mock-phone-wrap{display:flex;justify-content:center}
+.mock-phone{width:186px;border-radius:30px;overflow:hidden;border:7px solid #1a1a2e;box-shadow:0 8px 40px rgba(0,0,0,.22);transition:all .35s;position:relative;background:white}
+.mock-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:56px;height:16px;background:#1a1a2e;border-radius:0 0 10px 10px;z-index:10}
+.mock-phone:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 24px 64px rgba(0,0,0,.25)}
+
+/* Photo hero — desktop */
+.hero-photo{position:relative;height:190px;background-size:cover;background-position:center;overflow:hidden}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25) 0%,rgba(0,0,0,.7) 100%)}
+.hero-nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:rgba(0,0,0,.2);backdrop-filter:blur(6px)}
+.hero-content{position:absolute;bottom:0;left:0;right:0;z-index:5;padding:12px 14px}
+.h-logo{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;color:white}
+.h-logo-ic{width:18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:white}
+.h-nav-links{display:flex;gap:9px}
+.h-nav-links span{font-size:7.5px;color:rgba(255,255,255,.8)}
+.h-cta-nav{font-size:7.5px;font-weight:700;color:white;padding:4px 9px;border-radius:20px}
+.h-badge{display:inline-flex;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:2px 8px;font-size:6.5px;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.04em;margin-bottom:5px}
+.h-title{font-size:17px;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:white;margin-bottom:4px}
+.h-sub{font-size:7.5px;color:rgba(255,255,255,.75);line-height:1.4;margin-bottom:8px;max-width:85%}
+.h-btns{display:flex;gap:5px}
+.h-btn1{font-size:7.5px;font-weight:700;color:white;padding:4px 10px;border-radius:20px}
+.h-btn2{font-size:7.5px;color:rgba(255,255,255,.85);padding:4px 9px;border-radius:20px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
+
+/* Photo hero — mobile */
+.mob-hero-photo{position:relative;height:210px;background-size:cover;background-position:center;overflow:hidden}
+.mob-hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.72) 100%)}
+.mob-hero-nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 11px 8px;background:rgba(0,0,0,.15)}
+.mob-hero-content{position:absolute;bottom:0;left:0;right:0;z-index:5;padding:10px 12px}
+.mob-logo{display:flex;align-items:center;gap:4px;font-size:9.5px;font-weight:800;color:white}
+.mob-logo-ic{width:14px;height:14px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:6.5px;font-weight:900;color:white}
+.mob-ham{display:flex;flex-direction:column;gap:2.5px}
+.mob-ham span{width:14px;height:1.5px;background:white;display:block;border-radius:1px}
+.mob-title{font-size:14px;font-weight:900;line-height:1.15;letter-spacing:-.03em;color:white;margin-bottom:4px}
+.mob-sub{font-size:7px;color:rgba(255,255,255,.75);line-height:1.4;margin-bottom:7px}
+.mob-btn{font-size:7.5px;font-weight:700;color:white;padding:4px 10px;border-radius:20px;display:inline-block}
+
+/* Services strip */
+.svc-strip{padding:10px 12px}
+.svc-strip.lt{background:#f8fafc;border-top:1px solid rgba(0,0,0,.06)}
+.svc-strip.dk{background:#111;border-top:1px solid rgba(255,255,255,.06)}
+.svc-lbl{font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.svc-lbl.lt{color:#64748b}
+.svc-lbl.dk{color:rgba(255,255,255,.3)}
+.svc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.svc-c{border-radius:6px;padding:7px 6px}
+.svc-c.lt{background:white;border:1px solid rgba(0,0,0,.07)}
+.svc-c.dk{background:#1e1e1e;border:1px solid rgba(255,255,255,.07)}
+.svc-ic{font-size:11px;margin-bottom:2px}
+.svc-t{font-size:7px;font-weight:700;margin-bottom:1px}
+.svc-t.lt{color:#0d1526}
+.svc-t.dk{color:white}
+.svc-d{font-size:6.5px;line-height:1.3}
+.svc-d.lt{color:#64748b}
+.svc-d.dk{color:rgba(255,255,255,.4)}
+
+/* Mobile services */
+.mob-svc{padding:8px 10px;background:#f8fafc;border-top:1px solid rgba(0,0,0,.06)}
+.mob-svc-lbl{font-size:6.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin-bottom:6px}
+.mob-svc-list{display:flex;flex-direction:column;gap:3px}
+.mob-svc-row{display:flex;align-items:center;gap:5px;background:white;border:1px solid rgba(0,0,0,.07);border-radius:5px;padding:5px 7px}
+.mob-svc-ic{font-size:10px;flex-shrink:0}
+.mob-svc-t{font-size:7px;font-weight:700;color:#0d1526}
+.mob-svc-d{font-size:6px;color:#64748b;line-height:1.3}
+
+/* Label */
+.ex-label{margin-top:14px;text-align:center}
+.ex-sector{font-size:14px;font-weight:800;color:#0d1526;display:block;margin-bottom:3px}
+.ex-domain{font-size:11px;color:#64748b;font-family:var(--mono);display:block;margin-bottom:7px}
+.ex-cta{font-size:13px;font-weight:700;color:#f97316;text-decoration:none}
+</style>
+</head>
+<body>
+<section class="ex-sec">
+<div class="wrap">
+  <div class="ex-header">
+    <div class="stag">Onze klanten</div>
+    <h2 class="sh">Websites die we maakten</h2>
+    <p class="sp" style="max-width:560px;margin:12px auto 0">Elk ontwerp is uniek — afgestemd op de sector, doelgroep en uitstraling van het bedrijf.</p>
+  </div>
+  <div class="ex-grid">
+
+    <!-- 1. LOODGIETER desktop -->
+    <div>
+      <div class="mock-browser">
+        <div class="br-chrome lt">
+          <div class="br-dots"><div class="br-dot br-r"></div><div class="br-dot br-y"></div><div class="br-dot br-g"></div></div>
+          <div class="br-url">loodgieterdevries.nl</div>
+        </div>
+        <div class="hero-photo" style="background-image:url('Loodgieter.jpg')">
+          <div class="hero-nav">
+            <div class="h-logo"><div class="h-logo-ic" style="background:#0ea5e9">LV</div>De Vries Loodgieter</div>
+            <div class="h-nav-links"><span>Diensten</span><span>Tarieven</span><span>Contact</span></div>
+            <div class="h-cta-nav" style="background:#0ea5e9">Bel nu</div>
+          </div>
+          <div class="hero-content">
+            <div class="h-badge">⚡ 24/7 Spoedservice</div>
+            <div class="h-title">Uw loodgieter<br>in Amsterdam</div>
+            <div class="h-sub">Lekkage, verstopping of installatie — snel en betrouwbaar opgelost.</div>
+            <div class="h-btns">
+              <div class="h-btn1" style="background:#0ea5e9">Bel 020-123 4567</div>
+              <div class="h-btn2">Meer info</div>
+            </div>
+          </div>
+        </div>
+        <div class="svc-strip lt">
+          <div class="svc-lbl lt">Onze diensten</div>
+          <div class="svc-row">
+            <div class="svc-c lt"><div class="svc-ic">🔧</div><div class="svc-t lt">Lekkages</div><div class="svc-d lt">Snelle reparatie</div></div>
+            <div class="svc-c lt"><div class="svc-ic">🚿</div><div class="svc-t lt">Installatie</div><div class="svc-d lt">Bad & keuken</div></div>
+            <div class="svc-c lt"><div class="svc-ic">🚨</div><div class="svc-t lt">Spoed</div><div class="svc-d lt">24/7 service</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Loodgieter</span><span class="ex-domain">loodgieterdevries.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+    <!-- 2. KAPPER mobiel -->
+    <div>
+      <div class="mock-phone-wrap">
+        <div class="mock-phone">
+          <div class="mob-hero-photo" style="background-image:url('kapper.jpg')">
+            <div class="mob-hero-nav">
+              <div class="mob-logo"><div class="mob-logo-ic" style="background:#ec4899">KD</div>Kapper de Graaf</div>
+              <div class="mob-ham"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mob-hero-content">
+              <div class="mob-title">Jouw perfecte<br>kapsel begint hier</div>
+              <div class="mob-sub">Professionele kapsels voor mannen, vrouwen en kinderen.</div>
+              <div class="mob-btn" style="background:#ec4899">Afspraak maken</div>
+            </div>
+          </div>
+          <div class="mob-svc">
+            <div class="mob-svc-lbl">Wat we doen</div>
+            <div class="mob-svc-list">
+              <div class="mob-svc-row"><div class="mob-svc-ic">✂️</div><div><div class="mob-svc-t">Knippen & stylen</div><div class="mob-svc-d">Dames, heren & kinderen</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">🎨</div><div><div class="mob-svc-t">Kleuren & highlights</div><div class="mob-svc-d">Balayage & ombre</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">💆</div><div><div class="mob-svc-t">Behandelingen</div><div class="mob-svc-d">Keratine & voedingsmaskers</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Kapper</span><span class="ex-domain">kapperdegraaf.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+    <!-- 3. RESTAURANT desktop -->
+    <div>
+      <div class="mock-browser">
+        <div class="br-chrome dk">
+          <div class="br-dots"><div class="br-dot br-r"></div><div class="br-dot br-y"></div><div class="br-dot br-g"></div></div>
+          <div class="br-url dk">restaurantlaroma.nl</div>
+        </div>
+        <div class="hero-photo" style="background-image:url('Restaurant.jpg')">
+          <div class="hero-nav" style="background:rgba(0,0,0,0.4)">
+            <div class="h-logo"><div class="h-logo-ic" style="background:#d4a017">LA</div>L'Aroma Ristorante</div>
+            <div class="h-nav-links"><span>Menu</span><span>Reserveren</span><span>Over ons</span></div>
+            <div class="h-cta-nav" style="background:#d4a017;color:#0d0d0d">Reserveer</div>
+          </div>
+          <div class="hero-content">
+            <div class="h-badge" style="background:rgba(212,160,23,.2);border-color:rgba(212,160,23,.4);color:#f0c040">★ Since 1987 · Amsterdam</div>
+            <div class="h-title">Italiaanse traditie,<br><span style="color:#f0c040">moderne smaak</span></div>
+            <div class="h-sub">Authentieke gerechten bereid met verse ingrediënten. Elke dag vers.</div>
+            <div class="h-btns">
+              <div class="h-btn1" style="background:#d4a017;color:#0a0a0a">Tafel reserveren</div>
+              <div class="h-btn2">Bekijk menu</div>
+            </div>
+          </div>
+        </div>
+        <div class="svc-strip dk">
+          <div class="svc-lbl dk">Specialiteiten</div>
+          <div class="svc-row">
+            <div class="svc-c dk"><div class="svc-ic">🍝</div><div class="svc-t dk">Pasta</div><div class="svc-d dk">Vers dagelijks</div></div>
+            <div class="svc-c dk"><div class="svc-ic">🍕</div><div class="svc-t dk">Pizza</div><div class="svc-d dk">Houtoven</div></div>
+            <div class="svc-c dk"><div class="svc-ic">🍷</div><div class="svc-t dk">Wijnkaart</div><div class="svc-d dk">Italiaans</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Restaurant</span><span class="ex-domain">restaurantlaroma.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+    <!-- 4. COACH mobiel -->
+    <div>
+      <div class="mock-phone-wrap">
+        <div class="mock-phone">
+          <div class="mob-hero-photo" style="background-image:url('coach.jpg')">
+            <div class="mob-hero-nav">
+              <div class="mob-logo"><div class="mob-logo-ic" style="background:#818cf8">MV</div>Marie van Oers</div>
+              <div class="mob-ham"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mob-hero-content">
+              <div class="mob-title">Groei als mens,<br>groei als professional</div>
+              <div class="mob-sub">Coaching die je helpt je doelen te bereiken.</div>
+              <div class="mob-btn" style="background:#818cf8">Gratis intake gesprek</div>
+            </div>
+          </div>
+          <div class="mob-svc">
+            <div class="mob-svc-lbl">Mijn programma's</div>
+            <div class="mob-svc-list">
+              <div class="mob-svc-row"><div class="mob-svc-ic">🎯</div><div><div class="mob-svc-t">1-op-1 Coaching</div><div class="mob-svc-d">Persoonlijk traject</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">👥</div><div><div class="mob-svc-t">Groepstraining</div><div class="mob-svc-d">Samen groeien</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">📋</div><div><div class="mob-svc-t">Workshops</div><div class="mob-svc-d">Praktische tools</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Coach</span><span class="ex-domain">coachmarievanoers.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+    <!-- 5. FOTOGRAAF desktop -->
+    <div>
+      <div class="mock-browser">
+        <div class="br-chrome dk">
+          <div class="br-dots"><div class="br-dot br-r"></div><div class="br-dot br-y"></div><div class="br-dot br-g"></div></div>
+          <div class="br-url dk">fotograafstudio.nl</div>
+        </div>
+        <div class="hero-photo" style="background-image:url('fotograaf.jpg')">
+          <div class="hero-nav" style="background:rgba(0,0,0,0.35)">
+            <div class="h-logo"><div class="h-logo-ic" style="background:white;color:#0a0a0a">FS</div>Foto Studio</div>
+            <div class="h-nav-links"><span>Portfolio</span><span>Diensten</span><span>Contact</span></div>
+            <div class="h-cta-nav" style="background:white;color:#0a0a0a">Boek shoot</div>
+          </div>
+          <div class="hero-content">
+            <div class="h-badge">📸 Professionele fotografie</div>
+            <div class="h-title">Jouw moment,<br>voor altijd vastgelegd</div>
+            <div class="h-sub">Van portret tot bruiloft — emoties die verhalen vertellen.</div>
+            <div class="h-btns">
+              <div class="h-btn1" style="background:white;color:#0a0a0a">Bekijk portfolio</div>
+              <div class="h-btn2">Maak afspraak</div>
+            </div>
+          </div>
+        </div>
+        <div class="svc-strip dk">
+          <div class="svc-lbl dk">Specialisaties</div>
+          <div class="svc-row">
+            <div class="svc-c dk"><div class="svc-ic">👤</div><div class="svc-t dk">Portret</div><div class="svc-d dk">Zakelijk & privé</div></div>
+            <div class="svc-c dk"><div class="svc-ic">💒</div><div class="svc-t dk">Bruiloft</div><div class="svc-d dk">Jouw grote dag</div></div>
+            <div class="svc-c dk"><div class="svc-ic">🏢</div><div class="svc-t dk">Zakelijk</div><div class="svc-d dk">Product & bedrijf</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Fotograaf</span><span class="ex-domain">fotograafstudio.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+    <!-- 6. FYSIOTHERAPEUT mobiel -->
+    <div>
+      <div class="mock-phone-wrap">
+        <div class="mock-phone">
+          <div class="mob-hero-photo" style="background-image:url('Fysio.jpg')">
+            <div class="mob-hero-nav">
+              <div class="mob-logo"><div class="mob-logo-ic" style="background:#34d399">FB</div>Fysio Bakker</div>
+              <div class="mob-ham"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mob-hero-content">
+              <div class="mob-title">Bewegen zonder pijn,<br>leven zonder grenzen</div>
+              <div class="mob-sub">Fysiotherapie op maat voor herstel & sport.</div>
+              <div class="mob-btn" style="background:#34d399;color:#064e3b">Maak afspraak</div>
+            </div>
+          </div>
+          <div class="mob-svc">
+            <div class="mob-svc-lbl">Behandelingen</div>
+            <div class="mob-svc-list">
+              <div class="mob-svc-row"><div class="mob-svc-ic">🦴</div><div><div class="mob-svc-t">Revalidatie</div><div class="mob-svc-d">Na operatie of blessure</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">🏃</div><div><div class="mob-svc-t">Sportfysiotherapie</div><div class="mob-svc-d">Herstel & preventie</div></div></div>
+              <div class="mob-svc-row"><div class="mob-svc-ic">🖐</div><div><div class="mob-svc-t">Manuele therapie</div><div class="mob-svc-d">Rug, nek & gewrichten</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ex-label"><span class="ex-sector">Fysiotherapeut</span><span class="ex-domain">fysiotherapiebakker.nl</span><a href="#" class="ex-cta">Zo'n site wil ik →</a></div>
+    </div>
+
+  </div>
+</div>
+</section>
+</body>
+</html>
