@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#101a32">
+  <title>Bedankt voor je aankoop — Webby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Sampled directly from trywebby.nl */
+      --navy: #101a32;
+      --navy-deep: #0a1226;
+      --navbar-bg: #e7e8ea;
+      --navbar-text: #1a1a1a;
+      --navbar-text-dim: #656b79;
+      --text: #ffffff;
+      --text-dim: #98a2b3;
+      --text-faint: #6b7689;
+      --orange: #FA7415;
+      --orange-hover: #ff8632;
+      --orange-glow: rgba(250, 116, 21, 0.18);
+      --green: #37bf73;
+      --green-soft: rgba(55, 191, 115, 0.1);
+      --green-border: rgba(55, 191, 115, 0.3);
+      --grid-line: rgba(120, 140, 200, 0.06);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --surface: rgba(255, 255, 255, 0.025);
+
+      /* Responsive spacing scale */
+      --pad-x: clamp(20px, 4vw, 40px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Subtle grid pattern matching trywebby.nl hero */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 90%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 90%);
+    }
+
+    /* Soft orange glow accent */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -10%;
+      right: -10%;
+      width: min(700px, 90vw);
+      height: min(700px, 90vw);
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 65%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+      animation: drift 12s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+      50% { transform: translate(-40px, 40px) scale(1.1); opacity: 0.9; }
+    }
+
+    /* Light navbar matching trywebby.nl */
+    nav {
+      position: relative;
+      z-index: 10;
+      background: var(--navbar-bg);
+      padding: 16px var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: clamp(18px, 2.4vw, 22px);
+      letter-spacing: -0.02em;
+      color: var(--navbar-text);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      width: clamp(32px, 4vw, 38px);
+      height: clamp(32px, 4vw, 38px);
+      border-radius: 9px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 36px);
+    }
+
+    .nav-link {
+      color: var(--navbar-text-dim);
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { color: var(--navbar-text); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-hover);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta:active { transform: translateY(0); }
+
+    main {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(56px, 9vw, 110px) var(--pad-x) clamp(48px, 7vw, 80px);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      text-align: center;
+    }
+
+    .logo-mark {
+      display: inline-block;
+      margin-bottom: clamp(24px, 4vw, 36px);
+      animation: fadeUp 0.9s 0.15s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .logo-mark svg {
+      width: clamp(64px, 9vw, 80px);
+      height: clamp(64px, 9vw, 80px);
+      filter: drop-shadow(0 16px 40px var(--orange-glow));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px 7px 12px;
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #6ee7a3;
+      letter-spacing: 0.005em;
+      margin-bottom: clamp(20px, 3vw, 32px);
+      animation: fadeUp 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+      animation: blink 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: clamp(20px, 3vw, 28px);
+      animation: fadeUp 0.9s 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .lead {
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.6;
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 0 auto clamp(36px, 5vw, 56px);
+      animation: fadeUp 0.9s 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      text-wrap: pretty;
+    }
+
+    /* Timeline — 3 col on desktop/tablet, stacked on mobile */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: clamp(28px, 4vw, 40px);
+      animation: fadeUp 0.9s 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      list-style: none;
+    }
+
+    .step {
+      padding: clamp(16px, 2.5vw, 22px) clamp(14px, 2vw, 18px);
+      border-radius: 11px;
+      text-align: left;
+      position: relative;
+      transition: background 0.25s ease;
+    }
+
+    .step.active { background: rgba(250, 116, 21, 0.07); }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-bottom: clamp(10px, 1.5vw, 14px);
+      flex-shrink: 0;
+    }
+
+    .step.active .step-num {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: white;
+    }
+
+    .step-num svg { width: 12px; height: 12px; }
+
+    .step-title {
+      font-size: clamp(14px, 1.4vw, 14.5px);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+      letter-spacing: -0.005em;
+    }
+
+    .step-meta {
+      font-size: 12.5px;
+      color: var(--text-faint);
+    }
+
+    .footnote {
+      font-size: 14px;
+      color: var(--text-faint);
+      line-height: 1.6;
+      max-width: 460px;
+      margin: 0 auto;
+      animation: fadeUp 0.9s 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      text-wrap: pretty;
+    }
+
+    .footnote a {
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      transition: color 0.2s ease, border-color 0.2s ease;
+      word-break: break-word;
+    }
+
+    .footnote a:hover {
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* Blog section */
+    .blog-section {
+      position: relative;
+      z-index: 2;
+      padding: clamp(60px, 9vw, 110px) var(--pad-x) clamp(48px, 7vw, 80px);
+      border-top: 1px solid var(--border);
+    }
+
+    .blog-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto clamp(36px, 5vw, 56px);
+    }
+
+    .blog-eyebrow {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .blog-title {
+      font-size: clamp(28px, 4.2vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      text-wrap: balance;
+    }
+
+    .blog-subtitle {
+      font-size: clamp(14.5px, 1.4vw, 16px);
+      color: var(--text-dim);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .blog-banner {
+      aspect-ratio: 16 / 9;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .banner-seo {
+      background: linear-gradient(135deg, #0a1226 0%, #1e3a5f 100%);
+    }
+    .banner-basics {
+      background: linear-gradient(135deg, #0a1f1a 0%, #1f4d3f 100%);
+    }
+    .banner-vergelijking {
+      background: linear-gradient(135deg, #1e0e3d 0%, #5b3aa8 100%);
+    }
+
+    .blog-pill {
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .blog-body {
+      background: white;
+      padding: 22px 22px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .blog-time {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .blog-arrow {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .blog-card:hover .blog-arrow { transform: translateX(4px); }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: clamp(24px, 3vw, 32px) var(--pad-x);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-faint);
+      border-top: 1px solid var(--border);
+      text-wrap: pretty;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Tablet: 768px – 1023px ── */
+    @media (max-width: 1023px) {
+      /* Hide secondary nav links to prevent crowding */
+      .nav-link.secondary { display: none; }
+
+      /* 2-column blog grid on tablet */
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
+      }
+
+      /* Third card spans full width on tablet, centered */
+      .blog-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 360px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    /* ── Mobile: ≤ 767px ── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+
+      .nav-brand { gap: 10px; }
+
+      .nav-cta {
+        padding: 9px 16px;
+        font-size: 13.5px;
+      }
+
+      /* Stack timeline vertically */
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 6px;
+      }
+
+      /* Single-column blog grid on mobile */
+      .blog-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        gap: 16px;
+      }
+      .blog-card:nth-child(3) {
+        grid-column: auto;
+        max-width: none;
+      }
+
+      .step {
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+      }
+
+      .step-num {
+        margin-bottom: 0;
+      }
+
+      .step-content {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
+    /* ── Small mobile: ≤ 380px ── */
+    @media (max-width: 380px) {
+      :root { --pad-x: 16px; }
+
+      .nav-brand { font-size: 17px; }
+      .nav-logo { width: 30px; height: 30px; }
+
+      .nav-cta {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 6px 14px 6px 10px;
+      }
+
+      .lead { font-size: 14.5px; }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles for keyboard navigation */
+    a:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand" aria-label="Webby home">
+      <svg class="nav-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="100" height="100" rx="22" fill="#FA7415"/>
+        <text x="50" y="74" text-anchor="middle" font-family="Geist, sans-serif" font-weight="800" font-size="62" fill="white">W</text>
+      </svg>
+      webby
+    </a>
+
+    <div class="nav-links" aria-label="Hoofdnavigatie">
+      <a href="/#hoe-het-werkt" class="nav-link">Hoe het werkt</a>
+      <a href="/#voorbeelden" class="nav-link secondary">Voorbeelden</a>
+      <a href="/#prijzen" class="nav-link">Prijzen</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+      <a href="/blog" class="nav-link secondary">Blog</a>
+    </div>
+
+    <a href="https://www.trywebby.nl/" class="nav-cta">Terug</a>
+  </nav>
+
+  <main>
+    <div class="card">
+
+      <div class="badge" role="status">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Bestelling bevestigd
+      </div>
+
+      <h1>Bedankt voor <em>je aankoop.</em></h1>
+
+      <p class="lead">
+        We hebben jouw bestelling goed ontvangen. Mochten we nog extra vragen hebben omtrent jouw website, dan nemen we contact met je op via het opgegeven e-mailadres.
+      </p>
+
+      <ol class="timeline" aria-label="Voortgang van je bestelling">
+
+        <li class="step active">
+          <div class="step-num" aria-label="Stap 1, voltooid">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Bestelling ontvangen</div>
+            <div class="step-meta">Zojuist</div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-label="Stap 2">2</div>
+          <div class="step-content">
+            <div class="step-title">Wij bouwen je website</div>
+            <div class="step-meta">Binnen 48 uur</div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-label="Stap 3">3</div>
+          <div class="step-content">
+            <div class="step-title">Live & online</div>
+            <div class="step-meta">Klaar voor klanten</div>
+          </div>
+        </li>
+
+      </ol>
+
+      <p class="footnote">
+        Vragen in de tussentijd? Mail ons gerust op <a href="mailto:try.webby.now@gmail.com">try.webby.now@gmail.com</a>.
+      </p>
+
+    </div>
+  </main>
+
+  <section class="blog-section" aria-labelledby="blog-heading">
+    <div class="blog-header">
+      <span class="blog-eyebrow">Tips & inzichten</span>
+      <h2 class="blog-title" id="blog-heading">Meer weten over je website?</h2>
+      <p class="blog-subtitle">
+        Praktische artikelen om het meeste uit je nieuwe website te halen.
+      </p>
+    </div>
+
+    <div class="blog-grid">
+
+      <a href="https://www.trywebby.nl/blog-hoger-in-google.html" class="blog-card">
+        <div class="blog-banner banner-seo">
+          <span class="blog-pill">SEO &amp; Google</span>
+        </div>
+        <div class="blog-body">
+          <h3 class="blog-card-title">Hoger in Google als klein bedrijf: 5 tips die werken</h3>
+          <div class="blog-meta">
+            <span class="blog-time">5 min leestijd</span>
+            <svg class="blog-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.trywebby.nl/blog-website-hosting.html" class="blog-card">
+        <div class="blog-banner banner-basics">
+          <span class="blog-pill">Website basics</span>
+        </div>
+        <div class="blog-body">
+          <h3 class="blog-card-title">Wat is website hosting en heb je het nodig?</h3>
+          <div class="blog-meta">
+            <span class="blog-time">4 min leestijd</span>
+            <svg class="blog-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.trywebby.nl/blog-goedkope-website-betrouwbaar.html" class="blog-card">
+        <div class="blog-banner banner-vergelijking">
+          <span class="blog-pill">Vergelijking</span>
+        </div>
+        <div class="blog-body">
+          <h3 class="blog-card-title">Is een goedkope website betrouwbaar? Wat je moet weten</h3>
+          <div class="blog-meta">
+            <span class="blog-time">4 min leestijd</span>
+            <svg class="blog-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Webby — Professionele websites voor ZZP'ers
+  </footer>
+
+</body>
+</html>
