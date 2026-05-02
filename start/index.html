@@ -29,17 +29,17 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden;cursor:none}
-
+ 
 /* ── CURSOR ── */
 #cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
 #cur-r{position:fixed;width:36px;height:36px;border:1.5px solid rgba(249,115,22,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .11s ease-out}
 body:has(a:hover) #cur,body:has(button:hover) #cur,body:has(input:hover) #cur,body:has(label:hover) #cur{width:18px;height:18px;background:var(--indigo)}
 body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:54px;height:54px;border-color:rgba(99,102,241,.35)}
-
+ 
 /* ── GRAIN ── */
 .grain{position:fixed;inset:-50%;z-index:2;width:200%;height:200%;opacity:.025;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grn .4s steps(1) infinite}
 @keyframes grn{0%,100%{transform:translate(0,0)}10%{transform:translate(-1%,-2%)}30%{transform:translate(-2%,3%)}50%{transform:translate(-2%,2%)}70%{transform:translate(-1%,2%)}90%{transform:translate(-2%,1%)}}
-
+ 
 /* ── NAVBAR ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -55,7 +55,7 @@ nav{
 .n-links{display:flex;gap:28px}
 .n-links a{color:var(--muted);font-size:14px;font-weight:500;text-decoration:none;transition:color .2s}
 .n-links a:hover{color:var(--text)}
-
+ 
 /* ── HERO HEADER ── */
 .page-hero{
   padding-top:68px;
@@ -80,15 +80,15 @@ nav{
 .step-dot .dot{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
 .step-dot.active .dot{background:var(--accent);border-color:var(--accent);color:white}
 .step-line{width:32px;height:1px;background:rgba(255,255,255,.1)}
-
+ 
 /* ── FORM SECTION ── */
 .form-section{padding:64px 0 100px;background:var(--bg)}
 .form-wrap{max-width:680px;margin:0 auto;padding:0 24px}
-
+ 
 /* Progress bar */
 .progress-bar{height:3px;background:rgba(0,0,0,.06);border-radius:100px;margin-bottom:48px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--accent));border-radius:100px;transition:width .5s ease;width:0%}
-
+ 
 /* Form groups */
 .form-group{margin-bottom:28px;animation:fU .5s ease both}
 .form-group:nth-child(1){animation-delay:.05s}
@@ -101,12 +101,12 @@ nav{
 .form-group:nth-child(8){animation-delay:.4s}
 .form-group:nth-child(9){animation-delay:.45s}
 .form-group:nth-child(10){animation-delay:.5s}
-
+ 
 .form-label{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
 .label-req{color:var(--accent);font-size:16px;line-height:1}
 .label-opt{font-size:11px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:2px 8px}
 .form-hint{font-size:12px;color:var(--muted);margin-bottom:8px;line-height:1.5}
-
+ 
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -132,11 +132,11 @@ textarea:focus{
 }
 input::placeholder,textarea::placeholder{color:rgba(100,116,139,.5)}
 textarea{resize:vertical;min-height:110px;line-height:1.6}
-
+ 
 /* Row */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:560px){.form-row{grid-template-columns:1fr}}
-
+ 
 /* Radio cards */
 .radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .radio-grid.cols3{grid-template-columns:repeat(2,1fr)}
@@ -160,7 +160,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 .radio-check{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;margin-left:auto;flex-shrink:0;transition:all .2s}
 .radio-card input:checked + label .radio-check{background:var(--indigo);border-color:var(--indigo)}
 .radio-card input:checked + label .radio-check::after{content:'';width:6px;height:6px;border-radius:50%;background:white}
-
+ 
 /* File upload */
 .upload-zone{
   border:1.5px dashed rgba(0,0,0,.15);
@@ -178,12 +178,12 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 .upload-main{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
 .upload-sub{font-size:12px;color:var(--muted)}
 .upload-file-name{font-size:13px;font-weight:600;color:var(--indigo);margin-top:8px;display:none}
-
+ 
 /* Divider */
 .section-divider{display:flex;align-items:center;gap:12px;margin:40px 0 32px}
 .div-line{flex:1;height:1px;background:var(--border)}
 .div-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-
+ 
 /* Submit */
 .submit-area{margin-top:48px;text-align:center}
 .btn-submit{
@@ -201,12 +201,12 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 .btn-submit:active{transform:translateY(0)}
 .submit-note{font-size:13px;color:var(--muted);margin-top:14px}
 .submit-note strong{color:var(--text)}
-
+ 
 /* Trust bar */
 .trust-bar{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:32px;padding-top:32px;border-top:1px solid var(--border)}
 .trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted)}
 .trust-icon{font-size:14px}
-
+ 
 /* Success state */
 .success-overlay{display:none;position:fixed;inset:0;background:rgba(13,21,38,.95);z-index:200;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:48px}
 .success-overlay.show{display:flex}
@@ -214,7 +214,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
 .success-overlay h2{font-size:2rem;font-weight:900;color:white;letter-spacing:-.04em;margin-bottom:12px}
 .success-overlay p{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:400px;line-height:1.7}
-
+ 
 /* Mobile nav */
 @media(max-width:640px){
   nav{padding:14px 20px}
@@ -224,11 +224,11 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 </style>
 </head>
 <body>
-
+ 
 <div id="cur"></div>
 <div id="cur-r"></div>
 <div class="grain"></div>
-
+ 
 <!-- NAVBAR -->
 <nav>
   <a href="/" class="n-logo">
@@ -241,7 +241,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     <a href="/#prijzen">Prijzen</a>
   </div>
 </nav>
-
+ 
 <!-- HERO HEADER -->
 <div class="page-hero">
   <div class="h-orb o1"></div>
@@ -250,19 +250,19 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
   <div class="hero-inner">
     <div class="h-badge">
       <span class="h-bdot"></span>
-      Betaling ontvangen — stap 2 van 2
+      Vragenlijst — stap 1 van 2
     </div>
     <h1>Vertel ons over<br><span class="h-acc">jouw bedrijf</span></h1>
     <p>Vul onderstaand formulier in. Hoe meer je ons vertelt, hoe beter jouw website wordt. Het duurt maar 3 minuten.</p>
     <div class="step-dots">
-      <div class="step-dot">
-        <div class="dot">✓</div>
-        Betaling
+      <div class="step-dot active">
+        <div class="dot">1</div>
+        Vragenlijst
       </div>
       <div class="step-line"></div>
-      <div class="step-dot active">
+      <div class="step-dot">
         <div class="dot">2</div>
-        Vragenlijst
+        Betaling
       </div>
       <div class="step-line"></div>
       <div class="step-dot">
@@ -272,26 +272,26 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     </div>
   </div>
 </div>
-
+ 
 <!-- FORM SECTION -->
 <section class="form-section">
   <div class="form-wrap">
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
+ 
     <form id="webbyForm" novalidate>
-
+ 
       <!-- BLOK 1: Bedrijfsgegevens -->
       <div class="section-divider">
         <div class="div-line"></div>
         <div class="div-label">📋 Bedrijfsgegevens</div>
         <div class="div-line"></div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Bedrijfsnaam <span class="label-req">*</span></div>
         <input type="text" name="bedrijfsnaam" placeholder="Bv. Bakkerij Jansen" required>
       </div>
-
+ 
       <div class="form-row">
         <div class="form-group">
           <div class="form-label">KVK-nummer <span class="label-req">*</span></div>
@@ -302,43 +302,43 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
           <input type="tel" name="telefoon" placeholder="06 12345678" required>
         </div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">E-mailadres <span class="label-req">*</span></div>
         <input type="email" name="email" placeholder="jij@bedrijf.nl" required>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Adres <span class="label-req">*</span></div>
         <input type="text" name="adres" placeholder="Straatnaam 1, 1234 AB Amsterdam" required>
       </div>
-
+ 
       <!-- BLOK 2: Over je bedrijf -->
       <div class="section-divider">
         <div class="div-line"></div>
         <div class="div-label">💼 Over je bedrijf</div>
         <div class="div-line"></div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Wat doe jij? <span class="label-req">*</span></div>
         <div class="form-hint">Beschrijf je werk in 1 à 2 zinnen. Bv. "Ik ben loodgieter in Amsterdam en los lekkages en verstoppingen op."</div>
         <textarea name="omschrijving" placeholder="Ik ben..." required></textarea>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Voor wie werk jij? <span class="label-req">*</span></div>
         <div class="form-hint">Bv. particulieren, bedrijven, ouders, studenten, horecazaken</div>
         <input type="text" name="doelgroep" placeholder="Bv. particulieren in de regio Utrecht" required>
       </div>
-
+ 
       <!-- BLOK 3: Website voorkeur -->
       <div class="section-divider">
         <div class="div-line"></div>
         <div class="div-label">🎨 Jouw website</div>
         <div class="div-line"></div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Wat moeten bezoekers doen op je website? <span class="label-req">*</span></div>
         <div class="form-hint">Kies de belangrijkste actie</div>
@@ -365,7 +365,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
           <input type="text" name="whatsapp" placeholder="Bv. https://wa.me/31612345678">
         </div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Hoe moet je website eruitzien? <span class="label-req">*</span></div>
         <div class="radio-grid">
@@ -387,13 +387,13 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
           </div>
         </div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Welke kleur past bij jouw bedrijf? <span class="label-req">*</span></div>
         <div class="form-hint">Bv. donkerblauw, groen, oranje — of noem een website die je mooi vindt</div>
         <input type="text" name="kleur" placeholder="Bv. donkerblauw en wit, of www.voorbeeld.nl" required>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Logo uploaden <span class="label-opt">optioneel</span></div>
         <div class="upload-zone" id="uploadZone">
@@ -404,54 +404,54 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
           <div class="upload-file-name" id="uploadFileName"></div>
         </div>
       </div>
-
+ 
       <div class="form-group">
         <div class="form-label">Nog iets dat we moeten weten? <span class="label-opt">optioneel</span></div>
         <div class="form-hint">Speciale wensen, dingen die echt niet mogen, of extra info</div>
         <textarea name="extra" placeholder="Bv. mijn concurrenten zijn... / ik wil absoluut geen..."></textarea>
       </div>
-
+ 
       <!-- SUBMIT -->
       <div class="submit-area">
         <button type="submit" class="btn-submit">
-          Verstuur mijn aanvraag
+          Doorgaan naar betaling
           <span>→</span>
         </button>
-        <div class="submit-note">We starten binnen <strong>48 uur</strong> met jouw website</div>
+        <div class="submit-note">€250 excl. BTW eenmalig — daarna starten we direct</div>
         <div class="trust-bar">
-          <div class="trust-item"><span class="trust-icon">🔒</span> Veilig verzonden</div>
+          <div class="trust-item"><span class="trust-icon">🔒</span> Veilig betalen via Mollie</div>
           <div class="trust-item"><span class="trust-icon">⚡</span> 48 uur levertijd</div>
-          <div class="trust-item"><span class="trust-icon">✅</span> Betaling al ontvangen</div>
+          <div class="trust-item"><span class="trust-icon">↩️</span> Revisieronde inbegrepen</div>
         </div>
       </div>
-
+ 
     </form>
   </div>
 </section>
-
+ 
 <!-- SUCCESS OVERLAY -->
 <div class="success-overlay" id="successOverlay">
-  <div class="success-icon">🎉</div>
-  <h2>Aanvraag ontvangen!</h2>
-  <p>We zijn aan de slag. Binnen 48 uur is jouw website live. Je ontvangt een e-mail zodra alles klaar is.</p>
+  <div class="success-icon">💳</div>
+  <h2>Bijna klaar!</h2>
+  <p>Je wordt doorgestuurd naar de beveiligde betaalpagina van Mollie. Zodra de betaling binnen is, starten we direct met jouw website.</p>
 </div>
-
+ 
 <script>
 // WhatsApp input tonen/verbergen
 document.querySelectorAll('[name="cta"]').forEach(el=>el.addEventListener('change',function(){
   const wa=document.getElementById('waInput');
   wa.style.display=this.value==='App sturen'?'block':'none';
 }));
-
+ 
 // Cursor
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
 document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px'});
-
+ 
 // Progress bar based on filled fields
 const requiredFields=['bedrijfsnaam','kvk','telefoon','email','adres','omschrijving','doelgroep','kleur'];
 const radioGroups=['cta','stijl'];
 const fill=document.getElementById('progressFill');
-
+ 
 function updateProgress(){
   let filled=0;
   const total=requiredFields.length+radioGroups.length;
@@ -461,17 +461,17 @@ function updateProgress(){
 }
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',updateProgress));
 document.querySelectorAll('input[type=radio]').forEach(el=>el.addEventListener('change',updateProgress));
-
+ 
 // Logo upload label
 document.getElementById('logoInput').addEventListener('change',function(){
   const el=document.getElementById('uploadFileName');
   if(this.files[0]){el.textContent='📎 '+this.files[0].name;el.style.display='block'}
 });
-
-// Form submit → Gumloop webhook (URL hier invullen)
+ 
+// Form submit → /api/checkout → Mollie betaallink → redirect
 document.getElementById('webbyForm').addEventListener('submit',async function(e){
   e.preventDefault();
-
+ 
   // Validatie
   const required=this.querySelectorAll('[required]');
   let valid=true;
@@ -486,25 +486,50 @@ document.getElementById('webbyForm').addEventListener('submit',async function(e)
     }
   });
   if(!valid)return;
-
-  // Collect data
+ 
+  // Collect data (zonder file - logo vragen we later via mail)
   const fd=new FormData(this);
   const data={};
-  fd.forEach((v,k)=>data[k]=v);
-
-  // TODO: vervang deze URL met jouw Gumloop webhook URL
-  const WEBHOOK_URL='https://api.gumloop.com/api/v1/start_pipeline?api_key=54797eae58f04fbaae7a394a054d0934&user_id=LDVcVu6NGrbddDXsU48F2Z3tXQy1&saved_item_id=tuZPSnKTo4ZPLS5nnCKRY2';
-
+  fd.forEach((v,k)=>{
+    // Skip files - die kunnen niet als JSON
+    if(typeof v==='string')data[k]=v;
+  });
+ 
+  const btn=this.querySelector('.btn-submit');
+  const originalText=btn.innerHTML;
+  btn.innerHTML='Even geduld...';
+  btn.disabled=true;
+ 
   try{
-    const btn=this.querySelector('.btn-submit');
-    btn.textContent='Versturen...';
-    btn.disabled=true;
-
-    await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    // Stuur naar onze checkout endpoint die een Mollie betaallink maakt
+    const response=await fetch('/api/checkout',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+ 
+    if(!response.ok){
+      const err=await response.json().catch(()=>({}));
+      throw new Error(err.error||'Er ging iets mis');
+    }
+ 
+    const result=await response.json();
+ 
+    if(!result.checkoutUrl){
+      throw new Error('Geen betaallink ontvangen');
+    }
+ 
+    // Toon korte success melding, dan redirect naar Mollie
     document.getElementById('successOverlay').classList.add('show');
+    setTimeout(()=>{
+      window.location.href=result.checkoutUrl;
+    },1500);
+ 
   } catch(err){
-    // Toon success ook bij CORS-fout (webhook ontvangt het wel)
-    document.getElementById('successOverlay').classList.add('show');
+    btn.innerHTML=originalText;
+    btn.disabled=false;
+    alert('Er ging iets mis bij het aanmaken van de betaling. Probeer het opnieuw of neem contact op.');
+    console.error(err);
   }
 });
 </script>
