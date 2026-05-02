@@ -11,11 +11,30 @@ export default async function handler(req, res) {
   try {
     const formData = req.body || {};
 
-    if (!formData.naam || !formData.email) {
-      return res.status(400).json({ error: "Naam en email zijn verplicht" });
+    // Validatie: minimaal bedrijfsnaam en email vereist
+    if (!formData.bedrijfsnaam || !formData.email) {
+      return res.status(400).json({ error: "Bedrijfsnaam en email zijn verplicht" });
     }
 
-    const description = `Webby website voor ${formData.naam}`;
+    const description = `Webby website voor ${formData.bedrijfsnaam}`;
+
+    // Mollie metadata heeft een limiet van ~1KB.
+    // We slaan de essentiele velden op zodat de webhook (Fase 5)
+    // ze kan doorsturen naar Gumloop.
+    const metadata = {
+      bedrijfsnaam: formData.bedrijfsnaam,
+      email: formData.email,
+      telefoon: formData.telefoon || "",
+      kvk: formData.kvk || "",
+      adres: formData.adres || "",
+      omschrijving: (formData.omschrijving || "").slice(0, 300),
+      doelgroep: (formData.doelgroep || "").slice(0, 150),
+      cta: formData.cta || "",
+      whatsapp: formData.whatsapp || "",
+      stijl: formData.stijl || "",
+      kleur: (formData.kleur || "").slice(0, 100),
+      extra: (formData.extra || "").slice(0, 200)
+    };
 
     const mollieResponse = await fetch("https://api.mollie.com/v2/payment-links", {
       method: "POST",
@@ -31,7 +50,7 @@ export default async function handler(req, res) {
         description: description,
         redirectUrl: "https://trywebby.nl/bedankt.html",
         webhookUrl: "https://trywebby.nl/api/mollie-webhook",
-        metadata: formData
+        metadata: metadata
       })
     });
 
