@@ -50,7 +50,7 @@ export default async function handler(req, res) {
         description: description,
         redirectUrl: "https://trywebby.nl/bedankt.html",
         webhookUrl: "https://trywebby.nl/api/mollie-webhook",
-        metadata: metadata
+        metadata: JSON.stringify(metadata)
       })
     });
 
